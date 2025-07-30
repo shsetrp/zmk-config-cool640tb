@@ -21,44 +21,23 @@
     combos {
         compatible = "zmk,combos";
 
-        tab {
-            bindings = <&kp ESCAPE>;
-            key-positions = <0 1>;
-            layers = <0>;
+        toggle {
+            bindings = <&kp LS(CAPSLOCK)>;
+            key-positions = <16 17>;
+            layers = <0 1 2>;
         };
 
-        shift_tab {
-            bindings = <&kp TAB>;
-            key-positions = <10 11>;
+        equal {
+            bindings = <&kp EQUAL>;
+            key-positions = <18 19>;
             require-prior-idle-ms = <0>;
             layers = <0>;
         };
 
-        double_quotation {
-            bindings = <&kp CAPS>;
-            key-positions = <20 21>;
-            layers = <0>;
-        };
-
-        eq {
-            bindings = <&bt BT_CLR_ALL>;
-            key-positions = <8 9>;
-            layers = <2>;
-        };
-
-        BS {
-            bindings = <&kp BACKSPACE>;
-            key-positions = <8 9>;
-            layers = <0>;
-        };
-    };
-
-    macros {
-        to_layer_0: to_layer_0 {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings = <&to 0 &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
-            label = "TO_LAYER_0";
+        plus {
+            bindings = <&kp PLUS>;
+            key-positions = <18 19>;
+            layers = <1 2>;
         };
     };
 
@@ -78,32 +57,41 @@
 
         default_layer {
             bindings = <
-&kp Q       &kp W    &kp E             &kp R         &kp T        &kp Y        &kp U         &kp I          &kp O          &kp P
-&kp A       &kp S    &kp D             &kp F         &kp G        &kp H        &kp J         &kp K          &kp L          &kp ENTER
-&kp Z       &kp X    &kp C             &kp V         &kp B        &kp N        &kp M         &kp COMMA      &kp PERIOD     &kp LEFT_SHIFT
-&kp ESCAPE  &kp TAB  &kp LEFT_CONTROL  &kp LEFT_GUI  &lt 1 SPACE  &lt 2 SPACE  &kp LEFT_ALT  &kp BACKSPACE  &kp RC(SPACE)  &kp RG(N4)
+&kp Q             &kp W         &kp E         &kp R        &kp T          &kp Y          &kp U        &kp I         &kp O       &kp P
+&kp A             &kp S         &kp D         &kp F        &kp G          &kp H          &kp J        &kp K         &kp L       &kp MINUS
+&mt Z LEFT_SHIFT  &kp X         &kp C         &kp V        &kp B          &kp N          &kp M        &kp COMMA     &kp PERIOD  &kp SLASH
+&kp TAB           &kp UP_ARROW  &kp LEFT_ALT  &lt 2 SPACE  &mt LCTRL TAB  &kp BACKSPACE  &lt 1 ENTER  &kp LEFT_GUI  &kp LEFT    &kp RIGHT
             >;
         };
 
-        FUNCTION {
+        Layer1 {
             bindings = <
-&kp N1           &kp N2       &kp N3            &kp N4        &kp N5       &kp N6         &kp N7        &kp N8                &kp N9                 &kp N0
-&kp EXCLAMATION  &kp AT_SIGN  &kp HASH          &kp DOLLAR    &kp PERCENT  &kp AMPERSAND  &kp SQT       &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp ENTER
-&kp PLUS         &kp MINUS    &kp ASTERISK      &kp SLASH     &kp EQUAL    &kp TILDE      &kp QUESTION  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp QUESTION
-&kp N1           &kp N2       &kp LEFT_CONTROL  &kp LEFT_GUI  &none        &kp MINUS      &kp LEFT_ALT  &to 3                 &kp N3                 &kp N4
+&kp ESCAPE              &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp NUMBER_3  &none            &kp BACKSPACE  &kp UP    &kp DELETE  &kp N0
+&none                   &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp NUMBER_2  &kp HOME         &kp LEFT       &kp DOWN  &kp RIGHT   &kp END
+&mt LSHIFT KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp NUMBER_1  &kp LS(LC(TAB))  &kp LC(TAB)    &trans    &trans      &trans
+&trans                  &trans           &trans           &kp SPACE        &trans        &trans           &trans         &trans    &trans      &trans
             >;
         };
 
-        NUM {
+        Layer2 {
             bindings = <
-&kp F1       &kp F2   &kp F3             &kp F4         &kp F5          &kp F6         &kp F7          &kp F8          &kp F9           &kp F10
-&kp AT_SIGN  &kp SQT  &kp DOUBLE_QUOTES  &kp SEMICOLON  &kp COLON       &kp LEFT       &kp DOWN_ARROW  &kp UP_ARROW    &kp RIGHT        &kp ENTER
-&kp Z        &kp X    &kp C              &kp V          &kp B           &kp LC(SPACE)  &kp RG(SPACE)   &kp LEFT_BRACE  &kp RIGHT_BRACE  &kp SLASH
-&kp N1       &kp N2   &kp LEFT_CONTROL   &kp LEFT_GUI   &kp UNDERSCORE  &none          &kp LEFT_ALT    &kp BACKSPACE   &kp N3           &mo 4
+&kp EXCLAMATION  &kp AT     &kp HASH  &kp DOLLAR  &kp PERCENT  &kp AMPERSAND  &kp ASTERISK          &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp CARET
+&kp F2           &kp F5     &kp F7    &kp F8      &kp F10      &kp SEMICOLON  &kp SQT               &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp UNDERSCORE
+&kp LSHIFT       &kp LS(Z)  &none     &none       &none        &kp GRAVE      &kp NON_US_BACKSLASH  &kp LESS_THAN         &kp GREATER_THAN       &kp QUESTION
+&trans           &trans     &trans    &trans      &trans       &trans         &kp ENTER             &trans                &trans                 &trans
             >;
         };
 
-        ARROW {
+        MOUSE {
+            bindings = <
+&kp Q             &kp W         &kp E         &kp R        &kp T          &kp Y          &kp U        &kp I         &kp O       &kp P
+&kp A             &kp S         &kp D         &kp F        &kp G          &kp H          &mkp MB1     &mkp MB2      &mkp MB1    &mkp MB2
+&mt LEFT_SHIFT Z  &kp X         &kp C         &kp V        &kp B          &kp N          &kp M        &kp COMMA     &kp PERIOD  &kp SLASH
+&kp DOWN          &kp UP_ARROW  &kp LEFT_ALT  &lt 2 SPACE  &mt LCTRL TAB  &kp BACKSPACE  &lt 1 ENTER  &kp LEFT_GUI  &kp LEFT    &kp RIGHT
+            >;
+        };
+
+        None1 {
             bindings = <
 &bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2      &kp R         &kp T            &kp Y     &kp U         &kp I      &kp O       &kp P
 &kp A         &mmv MOVE_LEFT  &mmv MOVE_DOWN    &mmv MOVE_UP  &mmv MOVE_RIGHT  &kp H     &kp J         &kp K      &kp L       &kp ENTER
@@ -112,16 +100,7 @@
             >;
         };
 
-        MOUSE {
-            bindings = <
-&kp Q   &kp W   &kp E             &kp R         &kp T     &kp Y     &kp U         &kp I          &kp O       &kp P
-&kp A   &kp S   &kp D             &kp F         &kp G     &kp H     &kp J         &kp K          &kp L       &kp ENTER
-&kp Z   &kp X   &kp C             &kp V         &kp B     &kp N     &kp M         &kp COMMA      &kp PERIOD  &kp LEFT_SHIFT
-&kp N1  &kp N2  &kp LEFT_CONTROL  &kp LEFT_GUI  &mkp MB1  &mkp MB2  &kp LEFT_ALT  &kp BACKSPACE  &kp N3      &mo 0
-            >;
-        };
-
-        SCROLL {
+        None2 {
             bindings = <
 &kp Q   &kp W   &kp E             &kp R         &kp T        &kp Y        &kp U         &kp I          &kp O       &kp P
 &kp A   &kp S   &kp D             &kp F         &kp G        &kp H        &kp J         &kp K          &kp L       &kp ENTER
@@ -130,7 +109,7 @@
             >;
         };
 
-        layer_6 {
+        None3 {
             bindings = <
 &kp Q   &kp W   &kp E             &kp R         &kp T        &kp Y        &kp U         &kp I          &kp O       &kp P
 &kp A   &kp S   &kp D             &kp F         &kp G        &kp H        &kp J         &kp K          &kp L       &kp ENTER
